@@ -1,0 +1,604 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Manrope";
+}
+
+html {
+    height: 100%;
+    width: 100vw;
+    overflow: hidden;
+}
+
+body {
+    position: relative;
+    width: 100vw;
+    height: 100%;
+    overflow: hidden;
+}
+
+button {
+    user-select: none;
+}
+
+
+#on-download {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 80;
+    width: 100vw;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: white;
+    font-family: "Manrope";
+    background: #EBEBEB;
+}
+
+.on-load-shadow {
+    background-color: rgba(0, 0, 0, 0.15);
+    position: absolute;
+    width: calc(100vw - 60px);
+    height: calc(100% - 0px);
+    z-index: 70;
+    border-radius: 55px;
+}
+
+.on-load-img {
+    position: absolute;
+    width: calc(100vw - 60px);
+    height: calc(100% - 60px);
+    top: 30px;
+    left: 30px;
+    background: url(../../img/on-download.jpg) 0 0/cover no-repeat;
+    border-radius: 55px;
+    z-index: 50;
+}
+
+.on-load-percentage {
+    position: absolute;
+    top: 47%;
+    left: 46%;
+    font-family: 'Manrope';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 27px;
+    color: rgba(255, 255, 255, 0.85);
+    z-index: 50;
+}
+
+.on-load-text {
+    position: absolute;
+    z-index: 80;
+    width: 507px;
+    font-family: 'Manrope';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 49px;
+    color: #FFFFFF;
+    left: 46%;
+    top: 28%;
+}
+
+.on-load-text .en {
+    opacity: 1;
+    position: absolute;
+    width: 473px;
+    animation: animate-en infinite 6s;
+}
+
+@keyframes animate-en {
+    0% { opacity: 0; }
+    5% { opacity: 0; }
+    10% { opacity: 1; }
+    25% { opacity: 1; }
+    40% { opacity: 1; }
+    45% { opacity: 0; }
+    100% { opacity: 0; }
+}
+
+
+.on-load-text .ru {
+    position: absolute;
+    opacity: 0;
+    animation: animate-ru infinite 6s;
+}
+
+@keyframes animate-ru {
+    0% { opacity: 0; }
+    55% { opacity: 0; }
+    60% { opacity: 1; }
+    75% { opacity: 1; }
+    90% { opacity: 1; }
+    95% { opacity: 0; }
+    100% { opacity: 0; }
+}
+
+button, input {
+    font-size: inherit;
+}
+
+canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: scaleX(-1);
+}
+
+#angle {
+    position: absolute;
+    font-size: 3rem;
+    z-index: 40;
+    background: rgba(255, 255, 255, 0.7);
+    padding: 1rem;
+    top: 1rem;
+    left: 1rem;
+    border-radius: 1rem;
+}
+
+#fullscreen {
+    display: none;
+    position: absolute;
+    width: 6vh;
+    height: 6vh;
+    top: 92vh;
+    left: calc(100vw - 8vh);
+    z-index: 10;
+    background: transparent url(../../img/fullscreen.svg) no-repeat center;
+    background-size: contain;
+    border: none;
+}
+
+.instructions {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    left: 0;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 80;
+    background: rgba(0, 0, 0, 50%);
+    font-size: 2rem;
+    user-select: none;
+}
+
+.instructions > div {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 590px;
+    /* height: 638px; */
+    padding: 48px 70px;
+    gap: 10px;
+    background: #FFFFFF;
+    border-radius: 24px;
+}
+
+.instructions__header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 48px;
+}
+
+.instructions__header h2 {
+    font-family: 'Manrope';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 44px;
+    color: #1F1F1F;
+}
+
+.instructions__header .language {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.instructions__header .language button {
+    width: 39px;
+    height: 35px;
+    border-radius: 8px;
+}
+
+.current-language {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8px 10px;
+    background: rgba(0, 35, 54, 0.1);
+    border: 1px solid #002336;
+    font-family: 'Manrope';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 19px;
+    color: #002336;
+}
+
+.other-language {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8px 10px;
+    border: 1px solid #CED3D6;
+    font-family: 'Manrope';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 19px;
+    color: #969FA3;
+    cursor: pointer;
+    transition: .4s;
+}
+
+.other-language:hover, .other-language:active {
+    background: rgba(0, 35, 54, 0.75);
+    border: 1px solid #002336;
+    color: #F8FAFB;
+}
+
+.desktop-instructions__image {
+    margin-bottom: 32px;
+}
+
+
+.hide-instructions {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 32px;
+    height: 62px;
+    background: #002336;
+    border-radius: 8px;
+    font-family: 'Manrope';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 25px;
+    color: #FFFFFF;
+    transition: .4s;
+    cursor: pointer;
+}
+
+.hide-instructions:hover, .hide-instructions:active {
+    background: rgba(0, 35, 54, 0.1);
+    color: #002336;
+}
+
+#toast {
+    display: none;
+}
+
+.invisible {
+    display: none !important;
+}
+
+#transparent {
+    position: absolute;
+    cursor: grab;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 60;
+}
+
+#transparent:active {
+    cursor: grabbing;
+}
+
+#video-is-loading {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: min(5vw, 5vh);
+    z-index: 20;
+}
+
+#video-is-loading .percentage {
+    width: min(30vw, 30vh);
+    height: min(30vw, 30vh);
+    border-radius: 50%;
+    font-size: min(8vw, 8vh);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 10%) url(../../img/spinner.svg) no-repeat center;
+    background-size: contain;
+}
+
+
+.arrow-buttons {
+    display: none;
+}
+
+/* @media only screen and (hover: none) and (pointer: coarse) { */
+@media only screen and (pointer: coarse) {
+    #on-download {
+        position: absolute;
+        z-index: 30;
+        width: 100vw;
+        height: 100%;
+
+        background: #EBEBEB;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: min(7vw, 7vh);
+        color: white;
+        font-family: "Manrope";
+        padding: 15vw 0 0 min(10vw, 10vh);
+        background-position: 20% 0;
+        font-weight: 400;
+    }
+
+    .on-load-img {
+        /* background-position: 20% 0; */
+        background: url(../../img/on-load-mobile.jpg) 0 0/cover no-repeat;
+        background-position: right;
+    }
+
+    .on-load-img {
+        /* position: absolute;
+        width: calc(100vw - 60px);
+        height: calc(100% - 60px);
+        top: 30px;
+        /* right: 30px;
+        bottom: 30px; */
+        left: 30px;
+        border-radius: 55px;
+        z-index: 50; 
+    }
+
+    .on-load-percentage {
+        left: calc(12vw - 30px);
+        top: 27%;
+        font-size: 56px;
+    }
+    
+    .on-load-text {
+        top: 13%;
+        left: 12vw;
+        width: 65vw;
+        font-size: 68px;
+        font-weight: 400;
+        letter-spacing: 1px;
+        line-height: 84px;
+    }
+
+    .on-load-text .en {
+        width: 72vw
+    }
+    .on-load-text .ru {
+        width: 72vw
+    }
+
+    #mobile-instructions {
+        align-items: flex-start;
+        padding-top: 10vh;
+    }
+
+    #mobile-instructions > div {
+        width: 85vw;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 72px 108px;
+        background: #FFFFFF;
+        border-radius: 24px;
+    }
+    
+    .instructions__header {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        margin-bottom: 72px;
+    }
+    
+    .instructions__header h2 {
+        font-family: 'Manrope';
+        font-style: normal;
+        font-weight: 600;
+        font-size: 48px;
+        line-height: 66px;
+        color: #1F1F1F;
+    }
+    
+    .instructions__header .language {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+    
+    .instructions__header .language button {
+        width: 58px;
+        height: 52px;
+        border-radius: 12px;
+        font-family: 'Manrope';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 21px;
+        line-height: 29px;
+    }
+    
+    .current-language {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 8px 10px;
+        background: rgba(0, 35, 54, 0.1);
+        border: 1px solid #002336;
+        color: #002336;
+    }
+    
+    .other-language {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 8px 10px;
+        border: 1px solid #CED3D6;
+        color: #969FA3;
+        cursor: pointer;
+        transition: .4s;
+    }
+    
+    .other-language:hover, .other-language:active {
+        background: rgba(0, 35, 54, 0.75);
+        border: 1px solid #002336;
+        color: #F8FAFB;
+    }
+    
+    .mobile-instructions__image {
+        width: 100%;
+        margin-bottom: 48px;
+    }
+    
+    .mobile-instructions__image img {
+        width: 100%;
+        margin-bottom: 48px;
+    }
+    
+    
+    .hide-instructions {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 30px;
+        height: 93px;
+        background: #002336;
+        border-radius: 12px;
+        font-family: 'Manrope';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 28px;
+        line-height: 38px;
+        color: #FFFFFF;
+        transition: .4s;
+        cursor: pointer;
+    }
+    
+    .hide-instructions:hover, .hide-instructions:active {
+        background: rgba(0, 35, 54, 0.1);
+        color: #002336;
+    }
+
+    #fullscreen {
+        display: none;
+        align-items: center;
+        justify-content: center;
+        z-index: 10;
+        width: 12vw;
+        height: 12vw;
+        position: absolute;
+        top: calc(100% - 16vw);
+        left: 84vw;
+        border: none;
+    }
+
+    .arrow-buttons {
+        position: absolute;
+        z-index: 10;
+        display: flex;
+        /* flex-direction: column; */
+        align-items: center;
+        justify-content: center;
+        height: min(24vw, 24vh);
+        width: min(50vw, 50vh);
+        top: calc(100% - min(24vw, 24vh));
+        /* bottom: 0; */
+        left: 0;
+        background: transparent;
+        border-radius: 0 4vw 4vw 0;
+        gap: 4vw;
+        padding:4vw;
+        transition: 0.3s;
+    }
+
+
+    #arrow-button-up {
+        background: url(../../img/arrow-up.svg) no-repeat center;
+        width: 16vw;
+        height: 16vw;
+        background-size: contain;
+    }
+
+    .arrow-up-pressed {
+        background: url(../../img/arrow-up-pressed.svg) no-repeat center !important;
+        background-size: contain !important;
+    }
+
+    #arrow-button-divider {
+        width: min(1vw, 1vh);
+        height: min(16vw, 16vh);
+        background: url(../../img/arrow-divider.svg) no-repeat center;
+        background-size: contain;
+    }
+
+    #arrow-button-down {
+        background: url(../../img/arrow-down.svg) no-repeat center;
+        width: 16vw;
+        height: 16vw;
+        background-size: contain;
+    }
+
+    .arrow-down-pressed {
+        background: url(../../img/arrow-down-pressed.svg) no-repeat center !important;
+        background-size: contain !important;
+    }
+
+    #toast {
+        position: absolute;
+        width: 100vw;
+        height: 100vh;
+        left: 0;
+        top: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        z-index: 800;
+        /* background: rgba(0, 0, 0, 50%); */
+        font-size: 8rem;
+        align-items: start;
+        padding-top: min(100vw, 100vh);
+    }
+
+    .toast {
+        background: rgba(255, 255, 255, 70%);
+        /* background: rgba(0, 0, 0, 70%);
+        color: rgba(255, 255, 255, 70%); */
+        font-size: 4rem;
+        padding: 2rem;
+        width: 80%;
+        border-radius: 2rem;
+    }
+}
+
+@media all and (display-mode: fullscreen) {
+    /* every CSS goes here that you want to apply or alter in the fullscreen mode*/
+    #angle, #video-is-loading, .toast {
+        font-size: 2rem;
+    }
+}
+
+body:-webkit-full-screen #angle,
+body:-webkit-full-screen #video-is-loading,
+body:-webkit-full-screen .toast {
+    font-size: 2rem;
+}
+

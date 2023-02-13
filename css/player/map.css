@@ -1,0 +1,186 @@
+
+button {
+    border: none;
+    outline: none;
+    background: none;
+    cursor: pointer;
+
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+
+.map-modal {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: var(--map-flex-gap);
+    overflow: hidden;
+    transition:
+        width var(--map-transition),
+        height var(--map-transition),
+        border-radius calc(var(--map-transition) * 2 / 3);
+    inset: var(--map-margin) var(--map-margin) auto auto;
+    z-index: 100;
+}
+
+.map-modal.full-map {
+    background: rgba(0, 0, 0, 80%);
+    width: calc(var(--full-width) - var(--map-margin) * 2);
+    height: calc(var(--full-height) - var(--map-margin) * 2);
+    border-radius: var(--full-map-radius);
+    padding: var(--map-padding);
+}
+
+@media only screen and (pointer: coarse) {
+    .map-modal.full-map {
+        height: calc(var(--full-height) - var(--map-margin) - var(--map-portrait-margin-bottom));
+    }
+}
+
+.map-modal.mini-map {
+    background: rgba(0, 0, 0, 30%);
+    width: var(--mini-size);
+    height: var(--mini-size);
+    border-radius: calc(var(--mini-size) / 2);
+    cursor: pointer;
+}
+
+.map-title {
+    height: var(--map-title-height);
+    line-height: var(--map-title-height);
+    font-size: var(--map-title-font);
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    top: 0;
+    transition: var(--map-transition);
+    color: white;
+    
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+
+.map-title.mini-map {
+    top: calc(0px - var(--map-padding) * var(--map-transition-coefficient) - var(--map-margin) * var(--map-transition-coefficient));
+}
+
+.map-close-button {
+    position: absolute;
+    right: var(--map-padding);
+    top: var(--map-padding);
+    width: var(--map-title-height);
+    height: var(--map-title-height);
+    border-radius: var(--button-radius);
+    border: 2px solid #CED3D6;
+    transition: 0.3s;
+    background: url(../../img/map/close-button.svg) no-repeat center;
+    background-size: 37%;
+    transition: var(--map-transition);
+}
+
+.map-close-button.mini-map {
+    top: calc(0px - var(--map-padding) * var(--map-transition-coefficient) - var(--map-margin) * var(--map-transition-coefficient));
+}
+
+.map-close-button:hover {
+    background: white url(../../img/map/close-button-hover.svg) no-repeat center;
+    background-size: 37%;
+}
+
+
+.map-wrapper {
+    position: absolute;
+    outline: 1px solid transparent;
+    background: url(../../../map/video-map.png) no-repeat center;
+    background-size: contain;
+
+    width: var(--map-wrapper-width);
+    height: var(--map-wrapper-height);
+    transform-origin: center center;
+}
+
+.map-wrapper.full-map {
+    transition: var(--map-transition);
+    rotate: var(--map-wrapper-rotation);
+    top: calc(50% - var(--map-wrapper-height) / 2);
+    left: calc(50% - var(--map-wrapper-width) / 2);
+}
+
+.map-wrapper.full-mini-transition {
+    transition: var(--map-transition);
+    top: calc(50% - var(--mini-map-top));
+    left: calc(50% - var(--mini-map-left));
+    transform-origin: var(--mini-map-left) var(--mini-map-top);
+    rotate: var(--camera-rotation);
+}
+
+.map-wrapper.mini-map {
+    transition: none;
+    will-change: top, left;
+    top: calc(50% - var(--mini-map-top));
+    left: calc(50% - var(--mini-map-left));
+    transform-origin: var(--mini-map-left) var(--mini-map-top);
+    rotate: var(--camera-rotation);
+}
+
+.map-points {
+    display: flex;
+    justify-content: space-between;
+    width: calc(var(--full-width) - var(--map-margin) * 2 - var(--map-padding) * 2);
+    height: var(--map-title-height);
+    gap: var(--point-list-gap);
+    position: relative;
+    top: 0;
+    transition: var(--map-transition);
+}
+
+.map-points.mini-map {
+    top: calc(var(--map-padding) * var(--map-transition-coefficient) + var(--map-margin) * var(--map-transition-coefficient));
+}
+
+.map-points button {
+    display: block;
+    width: 100%;
+    height: 100%;
+    transition: 0.3s;
+    border: 1px solid #CED3D6;
+    color: white;
+    border-radius: var(--button-radius);
+    font-size: var(--point-font-size);
+    transition: calc(var(--map-transition) / 3) ease-in-out;
+}
+
+.map-points button:hover {
+    color: black;
+    background: white;
+}
+
+.map-dot {
+    width: var(--map-dot-size);
+    height: var(--map-dot-size);
+    border-radius: calc(var(--map-dot-size) / 2);
+    background: rgb(43, 40, 245);
+    position: absolute;
+    top: calc(0px - var(--map-dot-size) / 2 + var(--mini-map-top));
+    left: calc(0px - var(--map-dot-size) / 2 + var(--mini-map-left));
+    rotate: var(--map-dot-rotation);
+    z-index: 99;
+}
+
+.map-dot-person {
+    width: calc(var(--map-dot-size) * 3);
+    height: calc(var(--map-dot-size) * 3);
+    position: absolute;
+    top: calc(0px - var(--map-dot-size) * 1.7);
+    left: calc(0px - var(--map-dot-size));
+    background: url(../../img/map/dot-person.svg) no-repeat center;
+    background-size: contain;
+}

@@ -1,0 +1,200 @@
+{
+    "currentId": 0,
+    "folder": "../video-mobile/",
+    "folderDesktop": "../video-desktop/",
+    "folderMobile": "../video-mobile/",
+    "desktopSensitivity": 100,
+    "mobileSensitivity": 100,
+    "current": null,
+    "videos": [
+        {
+            "id": 0,
+            "name": "video-1.mp4",
+            "blob": null,
+            "angle": 358,
+            "points": [
+                {
+                    "x": 433.5711670921439,
+                    "y": 246.04961225374498,
+                    "name": "Спальня",
+                    "nameEnglish": "Bedroom",
+                    "coefficient": 0.48576658157121544
+                }
+            ],
+            "startConnections": [],
+            "endConnections": [
+                {
+                    "videoId": 1,
+                    "type": "start",
+                    "angle": 269,
+                    "startAngle": 224,
+                    "endAngle": 314
+                },
+                {
+                    "videoId": 4,
+                    "type": "start",
+                    "angle": 30,
+                    "startAngle": 345,
+                    "endAngle": 75
+                }
+            ],
+            "lineSegment": {
+                "startX": 436,
+                "startY": 316,
+                "endX": 431,
+                "endY": 172
+            }
+        },
+        {
+            "id": 1,
+            "name": "video-2.mp4",
+            "blob": null,
+            "angle": 269,
+            "points": [
+                {
+                    "x": 322.00106761565837,
+                    "y": 174.05658362989323,
+                    "name": "Кухня",
+                    "nameEnglish": "Kitchen",
+                    "coefficient": 0.5141459074733096
+                }
+            ],
+            "startConnections": [
+                {
+                    "videoId": 0,
+                    "type": "end",
+                    "angle": 178,
+                    "startAngle": 133,
+                    "endAngle": 223
+                },
+                {
+                    "videoId": 4,
+                    "type": "start",
+                    "angle": 30,
+                    "startAngle": 345,
+                    "endAngle": 75
+                }
+            ],
+            "endConnections": [
+                {
+                    "videoId": 2,
+                    "type": "start",
+                    "angle": 158,
+                    "startAngle": 113,
+                    "endAngle": 203
+                },
+                {
+                    "videoId": 3,
+                    "type": "start",
+                    "angle": 287,
+                    "startAngle": 242,
+                    "endAngle": 332
+                }
+            ],
+            "lineSegment": {
+                "startX": 431,
+                "startY": 172,
+                "endX": 219,
+                "endY": 176
+            }
+        },
+        {
+            "id": 2,
+            "name": "video-3.mp4",
+            "blob": null,
+            "angle": 158,
+            "points": [],
+            "startConnections": [
+                {
+                    "videoId": 1,
+                    "type": "end",
+                    "angle": 89,
+                    "startAngle": 44,
+                    "endAngle": 134
+                },
+                {
+                    "videoId": 3,
+                    "type": "start",
+                    "angle": 287,
+                    "startAngle": 242,
+                    "endAngle": 332
+                }
+            ],
+            "endConnections": [],
+            "lineSegment": {
+                "startX": 219,
+                "startY": 176,
+                "endX": 264,
+                "endY": 285
+            }
+        },
+        {
+            "id": 3,
+            "name": "video-4.mp4",
+            "blob": null,
+            "angle": 287,
+            "points": [
+                {
+                    "x": 144.53960598078137,
+                    "y": 153.2350387711943,
+                    "name": "Коридор",
+                    "nameEnglish": "Hall",
+                    "coefficient": 0.4742700256001186
+                }
+            ],
+            "startConnections": [
+                {
+                    "videoId": 1,
+                    "type": "end",
+                    "angle": 89,
+                    "startAngle": 44,
+                    "endAngle": 123
+                },
+                {
+                    "videoId": 2,
+                    "type": "start",
+                    "angle": 158,
+                    "startAngle": 124,
+                    "endAngle": 203
+                }
+            ],
+            "endConnections": [],
+            "lineSegment": {
+                "startX": 219,
+                "startY": 176,
+                "endX": 62,
+                "endY": 128
+            }
+        },
+        {
+            "id": 4,
+            "name": "video-5.mp4",
+            "blob": null,
+            "angle": 30,
+            "points": [],
+            "startConnections": [
+                {
+                    "videoId": 0,
+                    "type": "end",
+                    "angle": 178,
+                    "startAngle": 133,
+                    "endAngle": 223
+                },
+                {
+                    "videoId": 1,
+                    "type": "start",
+                    "angle": 269,
+                    "startAngle": 224,
+                    "endAngle": 314
+                }
+            ],
+            "endConnections": [],
+            "lineSegment": {
+                "startX": 431,
+                "startY": 172,
+                "endX": 491,
+                "endY": 70
+            }
+        }
+    ]
+}

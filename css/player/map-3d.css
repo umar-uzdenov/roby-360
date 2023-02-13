@@ -1,0 +1,40 @@
+.map-3d {
+    width: 100%;
+    height: 100%;
+    background: black;
+    z-index: 200;
+    position: absolute;
+    top: 0;
+    left: 0;
+    /* transform: scale(); */
+    transform: scaleX(-1);
+}
+
+.map-3d-close-button {
+    position: absolute;
+    background: url(../../img/menu/map-3d-close-button.svg) no-repeat center;
+    background-size: contain;
+    cursor: pointer;
+    z-index: 201;
+    transform: scaleX(-1);
+}
+
+@media not screen and (pointer: coarse) {
+    .map-3d-close-button {
+        width: min(6vw, 6vh);
+        height: min(6vw, 6vh);
+        top: calc(100% - min(8vw, 8vh));
+        /* left: calc(100% - min(8vw, 8vh)); */
+        left: min(2vw, 2vh);
+    }
+}
+
+@media only screen and (pointer: coarse) {
+    .map-3d-close-button {
+        width: min(12vw, 12vh);
+        height: min(12vw, 12vh);
+        top: calc(100% - min(16vw, 16vh));
+        /* left: calc(100% - min(14vw, 14vh)); */
+        left: min(4vw, 4vh);
+    }
+}

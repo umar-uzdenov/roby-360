@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="user-scalable=no" />
+    
+    <!-- <link rel="stylesheet" href="./css/reset.css" /> -->
+    <link rel="stylesheet" href="./css/fonts.css" />
+    <link rel="stylesheet" href="./css/player/style.css" />
+    <link rel="stylesheet" href="./css/player/map.css" />
+    <link rel="stylesheet" href="./css/player/map-3d.css" />
+    <link rel="stylesheet" href="./css/player/menu.css" />
+    <link rel="stylesheet" href="./css/player/arrows.css" />
+    
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script> -->
+    <!-- Used older version for compatibility with GTLF Loader -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/104/three.js"></script>
+
+    <script src="./js/utils.js"></script>
+    <script src="./js/player/global.js"></script>
+    <script src="./js/player/language.js"></script>
+    <script src="./js/player/menu.js"></script>
+    <script src="./js/player/instruction.js"></script>
+    <script src="./js/player/map.js"></script>
+    <script src="./js/player/arrows.js"></script>
+    <script src="js/player/angle.js"></script>
+    <script src="./js/player/video.js"></script>
+    <script src="./js/player/player.js"></script>
+    
+    <script src="./js/map-3d/GLTFLoader.js"></script>
+    <script src="./js/map-3d/OrbitControls.js"></script>
+    <script src="./js/map-3d/map-3d.js"></script>
+
+    <title>360 Video Player</title>
+</head>
+
+<body>
+    <div id="angle">Angle: 0</div>
+    <div id="transparent"></div>
+    <div id="arrow-buttons" class="arrow-buttons hidden-button">
+        <div id="arrow-button-up"></div>
+        <div id="arrow-button-divider"></div>
+        <div id="arrow-button-down"></div>
+    </div>
+    <button id="menu-button" class="hidden-button"></button>
+    <div id="menu-list" class="menu-list close">
+        <button id="speed-button" class="menu-item"></button>
+        <button id="map-3d-button" class="menu-item"></button>
+        <button id="map-button" class="menu-item"></button>
+        <button id="fullscreen-button" class="menu-item"></button>
+    </div>
+    <div id="speed-list" class="speed-list close">
+        <button id="speed-fastest" class="speed-item">
+            <div class="image"></div>
+            <div class="text">2x</div>
+        </button>
+        <button id="speed-fast" class="speed-item">
+            <div class="image"></div>
+            <div class="text">1.5x</div>
+        </button>
+        <button id="speed-normal" class="speed-item current">
+            <div class="image"></div>
+            <div class="text">1x</div>
+        </button>
+        <button id="speed-slow" class="speed-item">
+            <div class="image"></div>
+            <div class="text">0.75x</div>
+        </button>
+    </div>
+    <div id="on-download">
+        <div class="on-load-img">
+            <div class="on-load-shadow"></div>
+            <div class="on-load-percentage">Loading 0%</div>
+        </div>
+        <div class="on-load-text">
+            <div class="en">Walk through your future home!</div>
+            <div class="ru">Прогулка по вашему будущему дому!</div>
+        </div>
+    </div>
+    <div id="toast" class="invisible">
+        <div class="toast"></div>
+    </div>
+    <div id="video-is-loading" class="on-load-screen">
+        <div class="percentage"></div>
+    </div>
+
+    <div id="map-modal" class="map-modal mini-map invisible">
+        <div id="map-title" class="map-title mini-map">
+            <span class="language-ru">План помещения</span>
+            <span class="language-en invisible">Floor plan</span>
+        </div>
+        <button id="map-close-button" class="map-close-button mini-map"></button>
+        <div id="map-wrapper" class="map-wrapper mini-map">
+            <div id="map-dot" class="map-dot">
+                <div class="map-dot-person"></div>
+            </div>
+        </div>
+        <div id="map-points" class="map-points mini-map">
+            <!-- <button>First</button> -->
+        </div>
+        <style id="map-modal-style"></style>
+        <style id="map-wrapper-style"></style>
+    </div>
+
+    <div id="arrow-wrapper" class="arrow-wrapper hidden-arrow-wrapper">
+        <div id="arrows" class="arrows">
+            <div id="arrow-compass" class="arrow-compass"></div>
+        </div>
+    </div>
+
+    <div id="map-3d" class="map-3d invisible">
+        <button id="map-3d-close-button" class="map-3d-close-button"></button>
+    </div>
+
+    <div id="desktop-instructions" class="instructions invisible">
+        <div>
+            <div class="instructions__header">
+                <h2 class="ru-instruction language-ru">Инструкция</h2>
+                <h2 class="en-instruction language-en invisible">Instruction</h2>
+                <div class="language">
+                    <button class="language-ru-selector current-language">RU</button>
+                    <button class="language-en-selector other-language">EN</button>
+                </div>
+            </div>
+            <div class="desktop-instructions__image">
+                <img src="./img/pc-instruction-ru.svg" alt="pc instruction ru" class="ru-instruction language-ru" />
+                <img src="./img/pc-instruction-en.svg" alt="pc instruction en" class="en-instruction language-en invisible" />
+            </div>
+            <button id="hide-desktop-instructions" class="hide-instructions">
+                <span class="ru-instruction language-ru">Начать!</span>
+                <span class="en-instruction language-en invisible">Start!</span>
+            </button>
+        </div>
+    </div>
+    <div id="mobile-instructions" class="instructions invisible">
+        <div>
+            <div class="instructions__header">
+                <h2 class="ru-instruction language-ru">Инструкция</h2>
+                <h2 class="en-instruction language-en invisible">Instructions</h2>
+                <div class="language">
+                    <button class="language-ru-selector current-language">RU</button>
+                    <button class="language-en-selector other-language">EN</button>
+                </div>
+            </div>
+            <div class="mobile-instructions__image non-ios invisible">
+                <img src="./img/mobile-instruction-ru.svg" alt="mobile instruction ru" class="ru-instruction language-ru" />
+                <img src="./img/mobile-instruction-en.svg" alt="mobile instruction en" class="en-instruction language-en invisible" />
+            </div>
+            <div class="mobile-instructions__image ios invisible">
+                <img src="./img/ios-instruction-ru.svg" alt="ios instruction ru" class="ru-instruction language-ru" />
+                <img src="./img/ios-instruction-en.svg" alt="ios instruction en" class="en-instruction language-en invisible" />
+            </div>
+            <button id="hide-mobile-instructions" class="hide-instructions">
+                <span class="ru-instruction language-ru">Начать!</span>
+                <span class="en-instruction language-en invisible">Start!</span>
+            </button>
+        </div>
+    </div>
+    
+    <script>
+        window.addEventListener("load", () => {
+            const url = "map/video-map.json"
+
+            fetch(url).then(response => response.json().then(videoMap => {
+                player3D(videoMap)
+            }))
+        })
+    </script>
+    <style>
+        
+    </style>
+</body>
+
+</html>

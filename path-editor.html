@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/fonts.css" />
+    <link rel="stylesheet" href="./css/path-editor.css" />
+    <title>SVG Editor</title>
+</head>
+<body>
+    <header class="buttons">
+        <div class="mode-buttons-block">
+            <div class="video-buttons-block">
+                <h2 class="video-buttons-title">Видео</h2>
+                <div class="video-buttons">
+                    <button id="add-video" class="mode-button current-video">Добавить</button>
+                    <button id="move-video" class="mode-button">Двигать</button>
+                </div>
+            </div>
+            <div class="point-buttons-block">
+                <h2 class="point-buttons-title">Точки интереса</h2>
+                <div class="point-buttons">
+                    <button id="add-point" class="mode-button">Добавить</button>
+                    <button id="move-point" class="mode-button">Двигать</button>
+                </div>
+            </div>
+        </div>
+        <div class="load-buttons-block">
+            <h2 class="load-buttons-title">Работа с файлами</h2>
+            <div class="load-buttons">
+                <label for="load-background" class="load-button">
+                    Загрузить фон
+                    <input id="load-background" type="file" />
+                </label> 
+                <label for="load-map" class="load-button">
+                    Загрузить карту
+                    <input id="load-map" type="file" />
+                </label>
+                <button class="load-button" id="save-map">Сохранить карту</button>
+            </div>
+        </div>
+    </header>
+    <section class="editor">
+        <aside>
+            <h1><span>Список видео: </span><span id="count">0</span></h1>
+            <ul></ul>
+        </aside>
+        <main>
+            <svg xmlns="http://www.w3.org/2000/svg"></svg>
+        </main>
+    </section>
+    <script src="./js/utils.js"></script>
+    <script src="./js/color.js"></script>
+    <script src="./js/point.js"></script>
+    <script src="./js/video-arrow.js"></script>
+    <script src="./js/video-collection.js"></script>
+    <script src="./js/path-editor.js"></script>
+</body>
+</html>

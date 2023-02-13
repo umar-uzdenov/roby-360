@@ -1,0 +1,247 @@
+:root {
+    --vwh: min(1vw, 1vh)
+}
+
+
+#speed-button {
+    background: transparent url(../../img/menu/speed-button.svg) no-repeat center;
+    background-size: contain;
+}
+
+#map-3d-button {
+    background: transparent url(../../img/menu/map-3d-button.svg) no-repeat center;
+    background-size: contain;
+}
+
+#map-button {
+    background: transparent url(../../img/menu/map-button.svg) no-repeat center;
+    background-size: contain;
+}
+
+#fullscreen-button {
+    background: transparent url(../../img/menu/fullscreen-button.svg) no-repeat center;
+    background-size: contain;
+}
+
+#speed-fastest .image {
+    background: transparent url(../../img/menu/speed-fastest.svg) no-repeat top center;
+    background-size: contain;
+}
+
+#speed-fast .image {
+    background: transparent url(../../img/menu/speed-fast.svg) no-repeat top center;
+    background-size: contain;
+}
+
+#speed-normal .image {
+    background: transparent url(../../img/menu/speed-normal.svg) no-repeat top center;
+    background-size: contain;
+}
+
+#speed-slow .image {
+    background: transparent url(../../img/menu/speed-slow.svg) no-repeat top center;
+    background-size: contain;
+}
+
+@media not screen and (pointer: coarse) {
+
+    #menu-button {
+        display: none;
+    }
+
+    .menu-list {
+        width: calc(37 * var(--vwh));
+        height: calc(10 * var(--vwh));
+        /* background: rgba(0, 0, 0, 30%); */
+        position: absolute;
+        top: calc(100% - 11 * var(--vwh));
+        left: calc(100% - 38 * var(--vwh));
+        z-index: 99;
+        display: flex;
+        /* flex-direction: column; */
+        gap: calc(3 * var(--vwh));
+        padding: calc(2 * var(--vwh));
+        border-radius: calc(1 * var(--vwh));
+        transition: 0.3s;
+        overflow: hidden;
+    }
+
+    .menu-list.close {
+        top: 150%;
+    }
+
+    .menu-item {
+        width: calc(6 * var(--vwh));
+        height: calc(6 * var(--vwh));
+        transition: 0.3s;
+    }
+
+    .menu-item:hover {
+        background-color: rgba(0, 0, 0, 30%) !important;
+        box-shadow: 0 0 0 calc(2 * var(--vwh)) rgba(0, 0, 0, 30%);
+    }
+
+    .speed-list {
+        width: calc(37 * var(--vwh));
+        height: calc(10 * var(--vwh));
+        /* background: rgba(0, 0, 0, 30%); */
+        position: absolute;
+        top: calc(100% - 11 * var(--vwh));
+        left: calc(100% - 38 * var(--vwh));
+        z-index: 99;
+        display: flex;
+        flex-direction: row-reverse;
+        gap: calc(1 * var(--vwh));
+        padding: calc(1 * var(--vwh));
+        border-radius: calc(1 * var(--vwh));
+        transition: 0.3s;
+        overflow: hidden;
+    }
+
+    .speed-list.close {
+        top: 150%;
+    }
+
+    .speed-item {
+        width: calc(9 * var(--vwh));
+        height: calc(8 * var(--vwh));
+        transition: 0.3s;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-end;
+        gap: calc(1 * var(--vwh));
+        transition: 0.3s;
+    }
+
+    .speed-item:hover {
+        background-color: rgba(0, 0, 0, 30%) !important;
+        box-shadow: 0 0 0 calc(0.5 * var(--vwh)) rgba(0, 0, 0, 30%);
+    }
+
+    .speed-item.current {
+        background-color: rgba(0, 0, 0, 50%) !important;
+        box-shadow: 0 0 0 calc(0.5 * var(--vwh)) rgba(0, 0, 0, 50%);
+    }
+
+    .speed-item .image {
+        width: calc(6 * var(--vwh));
+        height: calc(4 * var(--vwh));
+    }
+
+    .speed-item .text {
+        width: calc(6 * var(--vwh));
+        height: calc(2 * var(--vwh));
+        line-height: calc(1.3 * var(--vwh));
+        font-size: calc(1.5 * var(--vwh));
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: end;
+    }
+}
+
+@media only screen and (pointer: coarse) {
+    .menu-list {
+        width: calc(20 * var(--vwh));
+        height: calc(74 * var(--vwh));
+        background: rgba(0, 0, 0, 30%);
+        position: absolute;
+        left: calc(100% - 22 * var(--vwh));
+        top: calc(100% - 98 * var(--vwh));
+        z-index: 99;
+        display: flex;
+        flex-direction: column;
+        gap: calc(6 * var(--vwh));
+        padding: calc(4 * var(--vwh));
+        border-radius: calc(2 * var(--vwh));
+        transition: 0.3s;
+    }
+
+    .menu-list.close {
+        left: 150%;
+    }
+
+
+    .menu-item {
+        width: calc(12 * var(--vwh));
+        height: calc(12 * var(--vwh));
+        transition: 0.3s;
+    }
+
+    .speed-list {
+        width: calc(20 * var(--vwh));
+        height: calc(74 * var(--vwh));
+        background: rgba(0, 0, 0, 30%);
+        position: absolute;
+        left: calc(100% - 22 * var(--vwh));
+        top: calc(100% - 98 * var(--vwh));
+        z-index: 99;
+        display: flex;
+        flex-direction: column;
+        gap: calc(2 * var(--vwh));
+        padding: calc(2 * var(--vwh));
+        border-radius: calc(2 * var(--vwh));
+        transition: 0.3s;
+        overflow: hidden;
+    }
+
+    .speed-list.close {
+        left: 150%;
+    }
+
+    .speed-item {
+        width: calc(16 * var(--vwh));
+        height: calc(16 * var(--vwh));
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-end;
+        transition: 0.3s;
+    }
+
+    .speed-item.current {
+        background-color: rgba(0, 0, 0, 50%) !important;
+        box-shadow: 0 0 0 calc(2 * var(--vwh)) rgba(0, 0, 0, 50%);
+    }
+
+    .speed-item .image {
+        width: calc(16 * var(--vwh));
+        height: calc(8 * var(--vwh));
+    }
+
+    .speed-item .text {
+        width: calc(16 * var(--vwh));
+        height: calc(6 * var(--vwh));
+        line-height: calc(4 * var(--vwh));
+        font-size: calc(4 * var(--vwh));
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: end;
+    }
+
+    #menu-button {
+        display: block;
+        position: absolute;
+        width: calc(12 * var(--vwh));
+        height: calc(12 * var(--vwh));
+        top: calc(100% - 16 * var(--vwh));
+        left: calc(100% - 16 * var(--vwh));
+        background: transparent url(../../img/menu/menu-button.svg) no-repeat center;
+        background-size: contain;
+        z-index: 99;
+        transition: .3s;
+    }
+
+    #menu-button.open {
+        width: calc(16 * var(--vwh));
+        height: calc(16 * var(--vwh));
+        top: calc(100% - 20 * var(--vwh));
+        left: calc(100% - 20 * var(--vwh));
+    }
+
+    .hidden-button {
+        top: 150% !important;
+    }
+}

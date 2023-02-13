@@ -1,0 +1,196 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Manrope";
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: rgb(106, 106, 106);
+    padding: 0.5rem;
+    gap: 2rem;
+    align-items: center;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    width: 100%;
+}
+
+.mode-buttons-block {
+    display: flex;
+    gap: 1rem;
+}
+
+.video-buttons-block, .point-buttons-block, .load-buttons-block {
+    display: flex;
+    flex-direction: column;
+    border-radius: 1rem;
+    align-items: center;
+    overflow: hidden;
+    background: rgb(255, 255, 187);
+}
+
+.video-buttons-title, .point-buttons-title, .load-buttons-title {
+    font-size: 1.7rem;
+    font-style: normal;
+    padding: 0.3rem;
+}
+
+.video-buttons, .point-buttons, .load-buttons {
+    display: flex;
+    border-radius: 1rem;
+    overflow: hidden;
+}
+
+.mode-button, .load-button {
+    /* width: 10%; */
+    padding: .5rem 1rem;
+    font-size: 1.5rem;
+    border: none;
+    transition: .5s;
+    background: transparent;
+    cursor: pointer;
+    user-select: none;
+}
+.mode-button:hover {
+    background: rgb(0, 255, 247);
+}
+.mode-button:active {
+    background: rgb(0, 255, 166);
+}
+.load-button:hover {
+    background: rgb(207, 63, 223);
+}
+.load-button:active {
+    background: rgb(223, 207, 63);
+}
+
+
+#add-dot {
+    width: 100%;
+}
+.current-video, .current-video:hover, .current-video:active {
+    background: rgb(0, 255, 166);
+}
+
+.editor {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    gap: 1rem;
+    /* overflow: visible; */
+    /* padding: 1rem; */
+}
+
+aside {
+    width: 30%;
+    /* height: 100%; */
+    border: 0.1rem solid #333;
+    border-radius: 0.5rem;
+    padding: 0.3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    height: 768px;
+}
+
+main {
+    display: flex;
+    outline: 1px solid black;
+}
+
+h1 {
+    text-align: center;
+}
+
+ul {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    height: 100%;
+    overflow: scroll;
+}
+
+ul > li {
+    text-decoration: none;
+    list-style: none;
+    background: transparent;
+    font-size: 2rem;
+    padding: 0.3rem;
+    border-radius: 0.6rem;
+    display: flex;
+    /* justify-content: space-between; */
+    flex-direction: column;
+    gap: 0.7rem;
+}
+
+.menu-video-title, .menu-point-title {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    gap: 0.3rem;
+}
+
+.point-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3em;
+}
+
+li input {
+    width: 100%;
+    border: none;
+    outline: none;
+    padding: 0.3rem;
+    border-radius: 0.3rem;
+}
+
+.remove-button {
+    padding: 0 0.7rem;
+    background: rgb(255, 95, 95);
+    border: none;
+    border-radius: 0.3rem;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.remove-button:hover {
+    background: rgb(239, 63, 63);
+}
+
+.remove-button:active {
+    background: rgb(223, 31, 31);
+}
+
+.video-angle {
+    font-size: 1rem;
+    display: flex;
+}
+
+.angle-description {
+    width: 70%;
+}
+
+.angle-input {
+    width: 30%;
+}
+
+main {
+    display: none;
+}
+
+#load-background, #load-map {
+    display: none;
+}
+
+.invisible {
+    display: none !important;
+}

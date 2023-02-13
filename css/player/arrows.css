@@ -1,0 +1,53 @@
+.arrow-wrapper {
+    width: min(24vw, 24vh);
+    height: min(24vw, 24vh);
+    padding: min(2vw, 2vh);
+    perspective: 200px;
+    position: absolute;
+    top: calc(100% - min(24vw, 24vh));
+    left: calc(50% - min(24vw, 24vh) / 2);
+    /* background: rgba(98, 98, 255, 0.384); */
+    z-index: 10;
+    transition: 0.3s;
+}
+
+.hidden-arrow-wrapper {
+    top: 150% !important;
+}
+
+.arrows {
+    width: min(20vw, 20vh);
+    height: min(20vw, 20vh);
+    /* background: rgba(255, 0, 0, 0.484); */
+    transform: rotateX(30deg) scaleY(0.7);
+}
+
+.arrow-compass {
+    width: min(20vw, 20vh);
+    height: min(20vw, 20vh);
+    border-radius: 50%;
+    /* background: rgba(0, 0, 0, 20%); */
+    /* box-shadow: 0 0 0 min(2vw, 2vh) rgba(0, 0, 0, 20%); */
+    /* transition: 0.1s; */
+    transform-origin: center center;
+}
+
+.arrow-compass div {
+    width: min(20vw, 20vh);
+    height: min(20vw, 20vh);
+    background: transparent url(../../img/arrow-nav.svg) no-repeat top center;
+    background-size: min(6vw, 6vh);
+    position: absolute;
+    inset: 0;
+    transform-origin: center center;
+    /* rotate: 70deg; */
+    /* transform: rotateX(90deg); */
+}
+
+@media only screen and (pointer: coarse) {
+    .arrow-wrapper {
+        top: calc(100% - min(28vw, 28vh));
+        left: calc(65% - min(24vw, 24vh) / 2);
+        transform: scale(1.7);
+    }
+}
